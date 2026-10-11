@@ -21,6 +21,7 @@ screenshots:
   - annotated/vscode/pipeline-config--target-branches
   - annotated/vscode/pipeline-config-user-stories--target-branches
   - annotated/vscode/pipeline-config-danger--promotion-branches
+  - annotated/vscode/pipeline-config-branch-merge-target
   - annotated/vscode/pipeline-cards--save-publish
   - annotated/vscode/work-save-completed
   - annotated/vscode/devops-pipeline-level3--four-stages
@@ -384,10 +385,14 @@ Quatre secrets, deux External Client Apps, deux clés. Fastidieux une fois, puis
 **Dites ensuite à `uat` où va son travail.** La commande a écrit que `preprod` se merge dans
 `main`. Rien n'a encore dit que `uat` se merge dans `preprod` : jusqu'ici `uat` était la fin du
 pipeline, et son fichier de branche le dit. Dans le panneau **DevOps Pipeline**, menu engrenage,
-**Pipeline Settings**, passez le sélecteur de portée en haut à droite sur **Branch: uat**, ouvrez
-l'onglet **Deployment** et cliquez sur **Edit**. Dans **Merge target branches**, saisissez
-`preprod`, puis **Save**. Sans cela le diagramme ne dessine aucune flèche de `uat` vers `preprod`,
-et le [Lab 3.6](3-6-release-to-production-and-read-dora-metrics.md) n'a pas de pastille **+ PR** où cliquer. L'étape 11 le publie avec le reste.
+**Pipeline Settings**, passez le sélecteur de portée en haut à droite sur **Branch: uat** **(1)**,
+ouvrez l'onglet **Deployment** **(2)** et cliquez sur **Edit**. Dans **Merge target branches**
+**(3)**, saisissez `preprod`, puis **Save** **(4)**, qui a pris la place d'**Edit**.
+
+![L'onglet Deployment des réglages de la branche uat, déverrouillé, avec preprod comme cible de merge](../../_assets/annotated/vscode/pipeline-config-branch-merge-target.png)
+
+Sans cela le diagramme ne dessine aucune flèche de `uat` vers `preprod`, et le [Lab 3.6](3-6-release-to-production-and-read-dora-metrics.md) n'a pas
+de pastille **+ PR** où cliquer. L'étape 11 le publie avec le reste.
 
 ### 9. Laisser les contributeurs démarrer un hotfix
 
