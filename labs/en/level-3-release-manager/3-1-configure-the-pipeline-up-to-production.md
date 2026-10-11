@@ -21,6 +21,7 @@ screenshots:
   - annotated/vscode/pipeline-config--target-branches
   - annotated/vscode/pipeline-config-user-stories--target-branches
   - annotated/vscode/pipeline-config-danger--promotion-branches
+  - annotated/vscode/pipeline-config-branch-merge-target
   - annotated/vscode/pipeline-cards--save-publish
   - annotated/vscode/work-save-completed
   - annotated/vscode/devops-pipeline-level3--four-stages
@@ -367,10 +368,14 @@ Four secrets, two External Client Apps, two keys. Tedious once, then never again
 **Then tell `uat` where its work goes next.** The command wrote that `preprod` merges into
 `main`. Nothing has said yet that `uat` merges into `preprod`: until now `uat` was the end of the
 pipeline, and its branch file says so. In the **DevOps Pipeline** panel, gear menu, **Pipeline
-Settings**, switch the scope selector at the top right to **Branch: uat**, open the **Deployment**
-tab and click **Edit**. In **Merge target branches**, type `preprod`, then **Save**. Without it
-the diagram draws no arrow from `uat` to `preprod`, and [Lab 3.6](3-6-release-to-production-and-read-dora-metrics.md) has no **+ PR** chip to click
-there. Step 11 publishes it with the rest.
+Settings**, switch the scope selector at the top right to **Branch: uat** **(1)**, open the
+**Deployment** tab **(2)** and click **Edit**. In **Merge target branches** **(3)**, type
+`preprod`, then **Save** **(4)**, which took the place of **Edit**.
+
+![The Deployment tab of the uat branch settings, unlocked, with preprod as its merge target](../../_assets/annotated/vscode/pipeline-config-branch-merge-target.png)
+
+Without it the diagram draws no arrow from `uat` to `preprod`, and [Lab 3.6](3-6-release-to-production-and-read-dora-metrics.md) has no **+ PR**
+chip to click there. Step 11 publishes it with the rest.
 
 ### 9. Let contributors start a hotfix
 

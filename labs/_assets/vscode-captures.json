@@ -1,6 +1,9 @@
 {
   "_comment": "VS Code images scripts/build/shots.mjs cannot find in vscode/.shot-gates.json: the ones taken by hand, and the ones taken under another pipeline state (SF_MOCK_PIPELINE_STATE) then copied in under another name. 'file' is the name the harness writes, the key the name the labs use.",
-  "manual": ["extensions-install", "clone-repository"],
+  "manual": [
+    "extensions-install",
+    "clone-repository"
+  ],
   "variants": {
     "devops-pipeline-fresh": {
       "gate": "devops-pipeline",
@@ -216,6 +219,15 @@
       "gate": "dora-metrics",
       "file": "dora-metrics-export-menu",
       "state": "level3"
+    },
+    "pipeline-config-branch-merge-target": {
+      "gate": "pipeline-config-branch-merge-target",
+      "file": "pipeline-config-branch-merge-target",
+      "state": "level3",
+      "_env_comment": "Lab 3.1 step 8: the Deployment tab of the uat branch, unlocked, with preprod as its merge target. The level3 state is the one where uat merges into preprod.",
+      "env": {
+        "SFDX_HARDIS_DOC_SCREENSHOTS_SETTINGS_BRANCH": "uat"
+      }
     }
   }
 }
