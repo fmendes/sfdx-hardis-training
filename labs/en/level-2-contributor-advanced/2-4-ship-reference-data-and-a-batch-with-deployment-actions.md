@@ -456,6 +456,14 @@ Command documentation: [hardis:org:data:import](https://sfdx-hardis.cloudity.com
 
 ## If it goes wrong
 
+**The action file is called `.sfdx-hardis.draft.yml`, or the check stops on *Draft deployment actions file found*.**
+You added the action while the panel knew no Pull Request for your branch: the **My Pull Request**
+card read *Pull Request not created yet*, so the action was kept in a draft. The pipeline only reads
+`scripts/actions/.sfdx-hardis.` followed by the number of the Pull Request and `.yml`, so a draft, or
+a file renamed to a name of your own, is never run. Once your Pull Request exists, open the
+**DevOps Pipeline** panel again and click **Refresh**: it renames the draft after your Pull Request
+and tells you so in a notification. Commit the renamed file, then **Save / Publish**.
+
 **The Crew Capacity tab is missing from the app in `helios-integration`.**
 Either the tab or the `Helios_Delivery` app was not in your Pull Request, or the tab is not
 **Visible** under **Tab Settings** of `Helios_Delivery_Manager`. The profile visibility you set in
