@@ -177,9 +177,9 @@ listed in `manifest/package-no-overwrite.xml` is removed from the package when t
 already has it, so a deployment cannot flatten a named credential that points at a different
 endpoint in each environment. The project starts with the list every sfdx-hardis project gets. It
 covers reports, dashboards, connected apps and credentials, Helios deploys none of those, so
-nothing it deploys is protected yet: [Lab 3.5](3-5-promote-to-uat-and-write-release-notes.md) adds the first entry that matters, before the first promotion to `uat`. It has no row
-in Pipeline Settings: the list is a file, opened from the **Deployment packages** menu of the
-DevOps Pipeline panel.
+nothing it deploys is protected yet: [Lab 3.5](3-5-promote-to-uat-and-write-release-notes.md) adds the first entry that matters, before the first promotion to `uat`. The list
+is a file: you open it from the **Deployment packages** menu of the DevOps Pipeline panel, not
+from a tab of this one.
 
 **Delta deployment** is **Use Delta Deployment** **(3)**, on the global **Deployment** tab **(2)**, and
 [Lab 3.3](3-3-deploy-to-integration-and-read-the-log.md) showed you it is **Disabled** here. With it on, each merge deploys the components that changed

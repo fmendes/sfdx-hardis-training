@@ -176,7 +176,15 @@ export default async function simulate(args) {
   }
 
   title("1 of 4  Creating the teammate branch");
-  run("git", ["fetch", "origin", "--prune"]);
+  // Checked: a fetch that failed leaves the fork's branches as this computer last saw them, and
+  // the teammate would start from an old commit without anything saying so
+  if (run("git", ["fetch", "origin", "--prune"]).code !== 0) {
+    restore();
+    abort(
+      "Your fork could not be read, so nothing was simulated.",
+      "Check your connection and your GitHub sign-in in VS Code, then run Simulate my teammates again."
+    );
+  }
   if (scenario.continues) {
     if (!gitOut(["rev-parse", "--verify", "--quiet", `origin/${scenario.branch}`])) {
       abort(
@@ -196,11 +204,11 @@ export default async function simulate(args) {
     // what the fork holds, the teammate starts from the fork.
     const forkHead = gitOut(["rev-parse", "--verify", "--quiet", `origin/${from}`]);
     if (forkHead && run("git", ["merge-base", "--is-ancestor", forkHead, "HEAD"], { quiet: true }).code !== 0) {
-      warn(`Your local ${from} is behind the ${from} of your fork and could not be updated. The teammate branch is cut from the one of your fork.`);
+      warn(`Your local ${from} does not hold what the ${from} of your fork holds, and could not be updated. The teammate branch is cut from the one of your fork. Your own ${from} stays as it is: pull it from the Source Control panel before you work on it.`);
       if (run("git", ["checkout", "--detach", forkHead], { quiet: true }).code !== 0) {
         restore();
         abort(
-          `Your local ${from} is behind the ${from} of your fork, and the fork's could not be checked out.`,
+          `Your local ${from} does not hold what the ${from} of your fork holds, and the fork's could not be checked out.`,
           `Switch to ${from}, pull it from the Source Control panel, then run Simulate my teammates again.`
         );
       }
