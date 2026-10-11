@@ -802,7 +802,6 @@
       "flags": [],
       "config": [
         "autoCleanTypes",
-        "packageNoOverwritePath",
         "useDeltaDeployment"
       ],
       "docs": [
@@ -841,7 +840,6 @@
       "config": [
         "mergeTargets",
         "availableTargetBranches",
-        "packageNoOverwritePath",
         "failValidationOnPendingManualActions"
       ],
       "docs": [
@@ -1590,10 +1588,6 @@
       ],
       "movedFrom": [
         "lab-3-3"
-      ],
-      "packageNoOverwritePath": [
-        "lab-3-4",
-        "lab-3-5"
       ],
       "monitoringRepository": [
         "lab-3-8"

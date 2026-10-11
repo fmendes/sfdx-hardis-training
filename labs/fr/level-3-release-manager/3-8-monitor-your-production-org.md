@@ -5,7 +5,7 @@ description: "Mettez en place le monitoring nocturne sfdx-hardis sur votre org S
 level: 3
 lab: 8
 lang: fr
-source_rev: "1651e48fae090ca8a17bcdbaee369e4501394d2a"
+source_rev: "e459fdee8f6ebfde36d3a957bc1787020da9231d"
 screenshots:
   - annotated/vscode/org-monitoring--not-a-monitoring-repo
   - annotated/vscode/monitoring-config--what-it-watches
@@ -336,6 +336,22 @@ Documentation des commandes : [hardis:org:configure:monitoring](https://sfdx-har
   fork, et un `AGENTS.md` à la racine de cette branche
 
 ## En cas de problème
+
+**Le push est refusé : *refusing to allow an OAuth App to create or update workflow ... without `workflow` scope*.**
+La branche de monitoring contient un fichier de workflow GitHub, et GitHub ne laisse pousser un tel
+fichier qu'avec des identifiants qui ont la permission `workflow`. Ceux que VS Code a utilisés ne
+l'ont pas. Cliquez sur l'icône **Accounts** en bas de la barre d'activité, déconnectez-vous de
+GitHub, puis cliquez de nouveau sur **Install Org Monitoring** : VS Code vous demande de vous
+connecter, et les permissions qu'il demande incluent les workflows. La commande peut être relancée
+sans risque. Ne poussez pas la branche par un autre moyen pour continuer : la commande écrit aussi
+le workflow sur `main` à la fin, et sans cette étape le workflow garde ses noms de branches
+d'exemple et ne traite jamais votre org.
+
+**Le workflow échoue sur une branche appelée `monitoring_myclient`.**
+Le workflow sur `main` liste encore les branches d'exemple : la commande n'a pas atteint sa
+dernière étape, le plus souvent après le push refusé ci-dessus. Cliquez de nouveau sur **Install
+Org Monitoring** une fois que le push passe : elle réécrit le workflow sur `main` avec votre
+branche et ses deux secrets.
 
 **Le workflow de monitoring échoue à l'authentification.**
 Comme au [Lab 3.1](3-1-configure-the-pipeline-up-to-production.md) : l'External Client App a besoin

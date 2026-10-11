@@ -5,7 +5,7 @@ description: "Un déploiement vert n'est pas une fonctionnalité qui marche. Liv
 level: 2
 lab: 4
 lang: fr
-source_rev: "e675a673ecb5326e65bfc6e0687d17187d034ea5"
+source_rev: "e459fdee8f6ebfde36d3a957bc1787020da9231d"
 screenshots:
   - annotated/vscode/sidebar-commands-custom-menu-2--lab-records
   - annotated/salesforce/crew-capacity-records
@@ -261,13 +261,14 @@ org d'envoyer des e-mails tout court est un réglage de Setup qu'aucun déploiem
 batch envoie au planificateur une synthèse quand il a fini, et dans une org où la délivrabilité n'est
 pas sur **All email**, cet e-mail est jeté sans un mot.
 
-| Champ        | Valeur                                  |
-|--------------|-----------------------------------------|
-| Type         | **Manual**                              |
-| Label        | `Set Email Deliverability to All Email` |
-| When         | **Before Metadata Deployment**          |
-| Instructions | les quatre lignes numérotées ci-dessous |
-| Target orgs  | All target orgs                         |
+| Champ              | Valeur                                  |
+|--------------------|-----------------------------------------|
+| Type               | **Manual**                              |
+| Label              | `Set Email Deliverability to All Email` |
+| When               | **Before Metadata Deployment**          |
+| Execution Contexts | Validation and Deployment jobs          |
+| Instructions       | les quatre lignes numérotées ci-dessous |
+| Target orgs        | All target orgs                         |
 
 ```
 1. Open **Setup**, type `Deliverability` in the Quick Find box, and open it.
@@ -290,6 +291,11 @@ org.
 droit d'envoyer des e-mails avant que quoi que ce soit qui en envoie y arrive : la personne qui merge
 fait donc ce clic d'abord, puis merge. Une étape manuelle déclarée avant le déploiement est listée en
 premier dans le commentaire de la Pull Request, c'est là qu'elle la lit.
+
+**Execution Contexts** est sur **Validation and Deployment jobs**, contrairement aux deux autres là
+aussi : le check de la Pull Request doit voir l'étape pour la réclamer avant le merge. Dès que
+**When** indique **Before Metadata Deployment**, une étape manuelle ne propose rien d'autre. Si
+votre fenêtre liste encore trois contextes, votre extension est plus ancienne : choisissez celui-ci.
 
 Une étape manuelle ne fait rien. Elle **apparaît dans le commentaire de la Pull Request et dans le
 rapport de déploiement**, de sorte que la personne qui livre en production est prévenue, dans la

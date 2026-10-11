@@ -5,6 +5,11 @@ a day, newest first, and a change goes under the date of the day it is made.
 
 ## 2026-10-11
 
+- Lab 2.4: the manual step is declared for the validation and deployment jobs. Declared for the deployment job only, it never stopped the check, in this lab and again in Lab 3.5.
+- Lab 3.5: the lab says that the promotion Pull Request is yours to create, what the number on the `integration` box counts, and how to leave a story out of a promotion.
+- Labs 3.5, 3.7 and 3.8: new troubleshooting entries for a promotion check that is green with no step to do, a pipeline that shows `integration` alone, and a monitoring push GitHub refuses for a missing `workflow` permission.
+- Lab 3.4 no longer mentions the setting that moves the no-overwrite list, which almost no project uses.
+- Simulate my teammates: the hotfix of Lab 3.7 is cut from the `preprod` of your fork, even when the one on your computer is behind.
 - Lab 3.6: the DORA metrics are read in the new DORA metrics panel of VS Code, one row per org of the pipeline, then exported as a Markdown report. No default org to set any more: the numbers come from the deployment jobs and the Pull Requests on GitHub.
 - Lab 3.6: the Overview now opens on the pipeline flow, which says how long a User Story takes to reach production and where it waits. The lead time of `main` is the one of the User Stories, 5.7 days, where the release Pull Request alone read 0.1.
 - Lab 3.6: new pictures of the gear menu, the Overview, the production tab and the Export menu, showing what a pipeline that released once looks like.
