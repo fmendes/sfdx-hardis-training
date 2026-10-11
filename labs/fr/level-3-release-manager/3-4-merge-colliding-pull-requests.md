@@ -5,7 +5,7 @@ description: "Décidez de l'ordre dans lequel trois Pull Requests sont mergées 
 level: 3
 lab: 4
 lang: fr
-source_rev: "2716fdcabcbbad1f55dfd4bf9ca469f064db02ae"
+source_rev: "9a2a621d604ae10d338c78e9dd31d214612c837a"
 screenshots:
   - annotated/vscode/welcome-custom-menu-3
   - annotated/vscode/pipeline-config--cleaning-overwrite
@@ -192,8 +192,8 @@ named credential qui pointe vers un endpoint différent dans chaque environnemen
 avec la liste que reçoit tout projet sfdx-hardis. Elle couvre rapports, tableaux de bord, connected
 apps et credentials, Helios ne déploie rien de tout cela, donc rien de ce qu'il déploie n'est encore
 protégé : le [Lab 3.5](3-5-promote-to-uat-and-write-release-notes.md) y ajoute la première entrée qui compte, avant la première promotion
-vers `uat`. Il n'a pas de ligne dans Pipeline Settings : la liste est un fichier, ouvert depuis le
-menu **Deployment packages** du panneau DevOps Pipeline.
+vers `uat`. La liste est un fichier : on l'ouvre depuis le menu **Deployment packages** du panneau
+DevOps Pipeline, pas depuis un onglet de celui-ci.
 
 **Le déploiement delta** est **Use Delta Deployment** **(3)**, dans l'onglet **Deployment** **(2)** global,
 et le [Lab 3.3](3-3-deploy-to-integration-and-read-the-log.md) vous a montré qu'il est **Disabled** ici. Activé, chaque merge déploie les composants
