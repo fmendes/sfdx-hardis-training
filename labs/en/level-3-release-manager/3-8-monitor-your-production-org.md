@@ -319,6 +319,20 @@ Command documentation: [hardis:org:configure:monitoring](https://sfdx-hardis.clo
 
 ## If it goes wrong
 
+**The push is refused: *refusing to allow an OAuth App to create or update workflow ... without `workflow` scope*.**
+The monitoring branch carries a GitHub workflow file, and GitHub only lets credentials that have
+the `workflow` permission push one. The ones VS Code used do not. Click the **Accounts** icon at the
+bottom of the activity bar, sign out of GitHub, then click **Install Org Monitoring** again: VS Code
+asks you to sign in, and the permissions it requests include workflows. The command can be run
+again safely. Do not push the branch another way and move on: the command also writes the workflow
+on `main` at the end, and without that step the workflow keeps its example branch names and never
+runs your org.
+
+**The workflow run fails on a branch called `monitoring_myclient`.**
+The workflow on `main` still lists the example branches: the command did not reach its last step,
+most often after the refused push above. Click **Install Org Monitoring** again once the push
+works: it rewrites the workflow on `main` with your branch and its two secrets.
+
 **The monitoring workflow fails at authentication.**
 Same as [Lab 3.1](3-1-configure-the-pipeline-up-to-production.md): the External Client App needs the user pre-authorised, and the secrets have to be in
 the **monitoring** repository, not the source one.
