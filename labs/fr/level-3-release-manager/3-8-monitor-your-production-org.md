@@ -5,7 +5,7 @@ description: "Mettez en place le monitoring nocturne sfdx-hardis sur votre org S
 level: 3
 lab: 8
 lang: fr
-source_rev: "e459fdee8f6ebfde36d3a957bc1787020da9231d"
+source_rev: "a198e6c6c15445b9c557bc430c2432f1ebc7d778"
 screenshots:
   - annotated/vscode/org-monitoring--not-a-monitoring-repo
   - annotated/vscode/monitoring-config--what-it-watches
@@ -271,6 +271,11 @@ endroit où il regardera est le projet. De retour dans le repository de sources 
 **Training: Level 3** > **Publish my pipeline configuration** : c'est de la configuration de
 pipeline, comme le reste.
 
+Cette commande fait tout le trajet seule, comme au [Lab 3.1](3-1-configure-the-pipeline-up-to-production.md) : elle crée une branche, committe la
+configuration, la pousse et ouvre la Pull Request. Vous n'avez rien à committer et aucune Pull
+Request à créer : attendez ses checks, mergez-la avec **Merge pull request**, puis **Pull** dans le
+panneau **Source Control**.
+
 À partir de là, l'**Org Monitoring Workbench** ouvert depuis le repository de sources propose
 **Open Monitoring Repository** au lieu d'une impasse.
 
@@ -336,6 +341,15 @@ Documentation des commandes : [hardis:org:configure:monitoring](https://sfdx-har
   fork, et un `AGENTS.md` à la racine de cette branche
 
 ## En cas de problème
+
+**Source Control affiche des centaines de fichiers à committer après Publish my pipeline configuration.**
+Regardez sous quel repository ils se trouvent : avec les deux dossiers ouverts dans une même
+fenêtre, **Source Control** liste les deux repositories l'un au-dessus de l'autre. Les fichiers sont
+dans `sfdx-hardis-training-monitoring`, pas dans votre fork, et Publish my pipeline configuration
+ne touche jamais à celui-là. C'est un backup pris depuis votre ordinateur, quand la carte
+**Metadata Backup** de l'**Org Monitoring Workbench** tourne là plutôt que dans le job de nuit. Ne les
+committez pas : le job committe son propre backup. Sur ce repository, **...** > **Changes** >
+**Discard All Changes**, puis **Pull**, et vous avez ce que le job a enregistré.
 
 **Le push est refusé : *refusing to allow an OAuth App to create or update workflow ... without `workflow` scope*.**
 La branche de monitoring contient un fichier de workflow GitHub, et GitHub ne laisse pousser un tel
