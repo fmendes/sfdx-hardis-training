@@ -5,6 +5,9 @@ a day, newest first, and a change goes under the date of the day it is made.
 
 ## 2026-10-11
 
+- Lab 3.1: new step giving `uat` its merge target to `preprod`, without which the diagram had no arrow between them. The confirmation of the secrets is described as the Yes or No question it is.
+- Lab 2.9: the last step of the list no longer contradicts the order the three traps ask for.
+- Labs 2.3 and 2.4: new troubleshooting entry for an action kept in a draft file, which the pipeline never runs.
 - Lab 2.4: the manual step is declared for the validation and deployment jobs. Declared for the deployment job only, it never stopped the check, in this lab and again in Lab 3.5.
 - Lab 3.5: the lab says that the promotion Pull Request is yours to create, what the number on the `integration` box counts, and how to leave a story out of a promotion.
 - Labs 3.5, 3.7 and 3.8: new troubleshooting entries for a promotion check that is green with no step to do, a pipeline that shows `integration` alone, and a monitoring push GitHub refuses for a missing `workflow` permission.
