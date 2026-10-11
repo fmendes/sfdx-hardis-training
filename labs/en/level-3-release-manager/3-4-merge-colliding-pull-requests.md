@@ -189,11 +189,11 @@ contains.
 
 <details markdown="1"><summary>Under the hood: the three mechanisms and where each one lives</summary>
 
-| Mechanism         | Configuration                                                     | What it does                                                                          |
-|-------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| Cleaning          | `autoCleanTypes` in `config/.sfdx-hardis.yml`                     | Rewrites the sources **at commit time**, in the contributor branch                    |
-| Overwrite manager | `manifest/package-no-overwrite.xml`                               | Removes components from the package **at deploy time**, when the org already has them |
-| Delta             | `useDeltaDeployment`                                              | Reduces the package to what changed since the last deployed commit                    |
+| Mechanism         | Configuration                                 | What it does                                                                          |
+|-------------------|-----------------------------------------------|---------------------------------------------------------------------------------------|
+| Cleaning          | `autoCleanTypes` in `config/.sfdx-hardis.yml` | Rewrites the sources **at commit time**, in the contributor branch                    |
+| Overwrite manager | `manifest/package-no-overwrite.xml`           | Removes components from the package **at deploy time**, when the org already has them |
+| Delta             | `useDeltaDeployment`                          | Reduces the package to what changed since the last deployed commit                    |
 
 The distinction between the first two is worth keeping straight, because they fail differently.
 
