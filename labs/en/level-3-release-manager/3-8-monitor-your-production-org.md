@@ -254,6 +254,11 @@ repository**: **Edit**, paste the address of your monitoring repository,
 `https://github.com/<your-handle>/sfdx-hardis-training-monitoring`, and **Save**. Then **Training:
 Level 3** > **Publish my pipeline configuration**: it is pipeline configuration, like the rest.
 
+That command does the whole trip on its own, as in [Lab 3.1](3-1-configure-the-pipeline-up-to-production.md): it creates a branch, commits the
+configuration, pushes it and opens the Pull Request. You have nothing to commit and no Pull
+Request to create: wait for its checks, merge it with **Merge pull request**, then **Pull** in the
+**Source Control** panel.
+
 From then on, the **Org Monitoring Workbench** opened from the source repository offers **Open
 Monitoring Repository** instead of a dead end.
 
@@ -318,6 +323,15 @@ Command documentation: [hardis:org:configure:monitoring](https://sfdx-hardis.clo
   and an `AGENTS.md` at the root of that branch
 
 ## If it goes wrong
+
+**Source Control shows hundreds of files to commit after Publish my pipeline configuration.**
+Look at which repository they are under: with both folders open in one window, **Source Control**
+lists the two repositories one above the other. The files are in `sfdx-hardis-training-monitoring`,
+not in your fork, and Publish my pipeline configuration never touches that one. They are a backup
+taken from your computer, when the **Metadata Backup** card of the **Org Monitoring Workbench** runs
+there instead of in the nightly job. Do not commit them: the job commits its own backup. On that
+repository, **...** > **Changes** > **Discard All Changes**, then **Pull**, and you have what the
+job saved.
 
 **The push is refused: *refusing to allow an OAuth App to create or update workflow ... without `workflow` scope*.**
 The monitoring branch carries a GitHub workflow file, and GitHub only lets credentials that have
